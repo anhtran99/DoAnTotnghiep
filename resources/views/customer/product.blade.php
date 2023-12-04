@@ -123,6 +123,7 @@
                                 </ul> 
                             </div>
                             <div class="col-md-6">
+                                <?php if ($customer_data['is_login']): ?>  
                                 <h3 class="font-size-18 mb-5">Thêm đánh giá</h3>
                                 <!-- Form -->
                                 <div class="js-validate">
@@ -173,6 +174,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php else: ?>
+                                <h3 class="font-size-18 mb-5">Bạn cần đăng nhập để thực hiện tính năng này</h3>
+                                <?php endif ?> 
+                                
                             </div>
                         </div> 
                         <div class="commentlist">

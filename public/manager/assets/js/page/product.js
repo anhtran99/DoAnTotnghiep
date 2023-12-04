@@ -104,7 +104,7 @@ const View = {
         renderVal(resource, metadata){ 
             JSON.parse(metadata).data.map(v => {
                 $(`${resource} .data-meta-name[meta-title='${Object.keys(v)}']`).val(Object.values(v))
-            })   
+            })
         },
         clear(resource){
             $(`${resource} .metadata-list`).find('.meta-item').remove()

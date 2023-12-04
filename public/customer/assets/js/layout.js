@@ -173,7 +173,7 @@ const ViewIndex = {
             })  
         }
     },
-    Cart: { 
+    Cart: {
         add_to_card(name, callback){
             $(document).on('click', `.action-add-to-card`, function() {
                 if($(this).attr('atr').trim() == name) {
@@ -243,15 +243,14 @@ const ViewIndex = {
             }
         });
     },
-    init(){ 
-        ViewIndex.Auth.init(); 
-        
-        let interval = setInterval(function() { 
-            // clearInterval(interval); 
-            $(".lazy-load").each(function(index, el) { 
-                $(this).attr("src", $(this).attr("data-src"))  
+    init(){
+        ViewIndex.Auth.init();
+        let interval = setInterval(function() {
+            // clearInterval(interval);
+            $(".lazy-load").each(function(index, el) {
+                $(this).attr("src", $(this).attr("data-src"))
             });
-        }, 100); 
+        }, 100);
     }
 };
 (() => {

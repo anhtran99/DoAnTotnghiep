@@ -25,8 +25,9 @@ class ProductRepository extends BaseRepository implements RepositoryInterface
     } 
     public function get_one($id){ 
         return DB::table('product') 
-                ->select("product.*", 'category.name as category_name', 'category.image as category_image') 
+                ->select("product.*", 'category.name as category_name', 'category.image as category_image', 'warehouse.quantity as warehouse_quatity') 
                 ->leftjoin('category', 'product.category_id', '=', 'category.id')
+                ->leftjoin('warehouse', 'warehouse.product_id', '=', 'product.id')
                 ->where([["product.id", "=", $id]]) 
                 ->first(); 
     }
