@@ -38,11 +38,21 @@ class ProductRepository extends BaseRepository implements RepositoryInterface
 
 
 
-
-
-
-
-
+    public function can_comment($id, $product_id){
+        if (!$id["id"]) {
+            return false;
+        }else{
+            $data = DB::table('full_order') 
+                ->leftjoin('order_detail', 'order_detail.order_id', '=', 'full_order.id') 
+                ->where([['full_order.customer_id', $id["id"]], ['order_detail.product_id', $product_id]])
+                ->get();
+            if (count($data) > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 
 
     public function get_all_condition($request){

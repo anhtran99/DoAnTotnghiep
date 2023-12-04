@@ -317,6 +317,7 @@ const ViewIndex = {
     })
 
     function getCart(){
+        var cart = localStorage.getItem("card") == null ? [] : localStorage.getItem("card").split(","); 
         if (ViewIndex.Auth.isLogin()) {
             Api.Cart.GetCart()
                 .done(res => { 

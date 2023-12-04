@@ -80,7 +80,7 @@ class CustomerRepository extends BaseRepository implements RepositoryInterface
     public function get_cart($id){
          $sql = "SELECT id, cart
                     FROM customer_detail 
-                    WHERE customer_id = ".$id;
+                    WHERE customer_auth_id = ".$id;
         return DB::select($sql);
     }
  
