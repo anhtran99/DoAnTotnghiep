@@ -195,6 +195,7 @@ const View = {
             });
         },
         onRender(data){
+            $(".total-review").html(`(${data.length} customer reviews)`)
             $(".commentlist .comment-item").remove()
             data.map(v => {
                 var rating_data = "";
@@ -211,7 +212,7 @@ const View = {
                             </div>
                             <p class="text-gray-90">${v.comment ?? ""}</p>
                             <div class="mb-2">
-                                <strong>${v.name}</strong>
+                                <strong>${v.username}</strong>
                                 <span class="font-size-13 text-gray-23">${v.created_at}</span>
                             </div>
                         </div>`)

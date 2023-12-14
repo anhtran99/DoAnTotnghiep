@@ -25,8 +25,9 @@ class ProductRepository extends BaseRepository implements RepositoryInterface
     } 
     public function get_one($id){ 
         return DB::table('product') 
-                ->select("product.*", 'category.name as category_name', 'category.image as category_image') 
+                ->select("product.*", 'category.name as category_name', 'category.image as category_image', 'warehouse.quantity as warehouse_quatity') 
                 ->leftjoin('category', 'product.category_id', '=', 'category.id')
+                ->leftjoin('warehouse', 'warehouse.product_id', '=', 'product.id')
                 ->where([["product.id", "=", $id]]) 
                 ->first(); 
     }
@@ -37,11 +38,21 @@ class ProductRepository extends BaseRepository implements RepositoryInterface
 
 
 
-
-
-
-
-
+    public function can_comment($id, $product_id){
+        if (!$id["id"]) {
+            return false;
+        }else{
+            $data = DB::table('full_order') 
+                ->leftjoin('order_detail', 'order_detail.order_id', '=', 'full_order.id') 
+                ->where([['full_order.customer_id', $id["id"]], ['order_detail.product_id', $product_id]])
+                ->get();
+            if (count($data) > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 
 
     public function get_all_condition($request){

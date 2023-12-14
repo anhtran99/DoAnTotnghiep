@@ -49,14 +49,7 @@
                             <h2 class="font-size-25 text-lh-1dot2 product-name"> </h2>
                             <div class="mb-2">
                                 <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
-                                    <div class="text-warning mr-2">
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="far fa-star text-muted"></small>
-                                    </div>
-                                    <span class="text-secondary font-size-13">(3 customer reviews)</span>
+                                    <span class="text-secondary font-size-13 total-review"></span>
                                 </a>
                             </div>
                             <div class="d-md-flex align-items-center"> 
@@ -75,6 +68,7 @@
                         <div class="d-md-flex align-items-end mb-3"> 
                             <div class="ml-md-3">
                                 <a href="#" class="btn px-5 btn-primary-dark transition-3d-hover action-add-to-card" data-id=" " atr="Add to card"> </a>
+                                <a href="#" class="btn px-5 btn-primary-dark transition-3d-hover action-compare" data-id=" " atr="Compare">Thêm vào so sánh</a>
                             </div>
                         </div>
                     </div>
@@ -121,62 +115,73 @@
                                 </div> 
                                 <ul class="rate-list-data"> 
                                 </ul> 
+
+                                <div class="commentlist">
+                                    
+                                </div> 
                             </div>
                             <div class="col-md-6">
-                                <h3 class="font-size-18 mb-5">Thêm đánh giá</h3>
-                                <!-- Form -->
-                                <div class="js-validate">
-                                    <div class="row align-items-center mb-4">
-                                        <div class="col-md-4 col-lg-3">
-                                            <label for="rating" class="form-label mb-0">Đánh giá</label>
-                                        </div>
-                                        <div class="col-md-8 col-lg-9">
-                                            <div id="half-stars-example">
-                                                <div class="rating-group">
-                                                    <input class="rating__input rating__input--none" name="rating2" id="rating2-0" value="0" type="radio">
-                                                    <label aria-label="0 stars" class="rating__label" for="rating2-0">&nbsp;</label>
-                                                    <label aria-label="1 star" class="rating__label" for="rating2-10">
-                                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                                    </label>
-                                                    <input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
-                                                    <label aria-label="2 stars" class="rating__label" for="rating2-20">
-                                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                                    </label>
-                                                    <input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
-                                                    <label aria-label="3 stars" class="rating__label" for="rating2-30">
-                                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                                    </label>
-                                                    <input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
-                                                    <label aria-label="4 stars" class="rating__label" for="rating2-40">
-                                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                                    </label>
-                                                    <input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
-                                                    <label aria-label="5 stars" class="rating__label" for="rating2-50">
-                                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                                    </label>
-                                                    <input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio" checked="">
+                                <?php if ($customer_data['is_login']): ?>  
+
+                                    <?php if (!$comment): ?>  
+                                        <h3>Bạn cần mua sản phẩm để đánh giá</h3>
+                                    <?php else: ?>
+                                        <h3 class="font-size-18 mb-5">Thêm đánh giá</h3>
+                                        <!-- Form -->
+                                        <div class="js-validate">
+                                            <div class="row align-items-center mb-4">
+                                                <div class="col-md-4 col-lg-3">
+                                                    <label for="rating" class="form-label mb-0">Đánh giá</label>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <div id="half-stars-example">
+                                                        <div class="rating-group">
+                                                            <input class="rating__input rating__input--none" name="rating2" id="rating2-0" value="0" type="radio">
+                                                            <label aria-label="0 stars" class="rating__label" for="rating2-0">&nbsp;</label>
+                                                            <label aria-label="1 star" class="rating__label" for="rating2-10">
+                                                                <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                                            </label>
+                                                            <input class="rating__input" name="rating2" id="rating2-10" value="1" type="radio">
+                                                            <label aria-label="2 stars" class="rating__label" for="rating2-20">
+                                                                <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                                            </label>
+                                                            <input class="rating__input" name="rating2" id="rating2-20" value="2" type="radio">
+                                                            <label aria-label="3 stars" class="rating__label" for="rating2-30">
+                                                                <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                                            </label>
+                                                            <input class="rating__input" name="rating2" id="rating2-30" value="3" type="radio">
+                                                            <label aria-label="4 stars" class="rating__label" for="rating2-40">
+                                                                <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                                            </label>
+                                                            <input class="rating__input" name="rating2" id="rating2-40" value="4" type="radio">
+                                                            <label aria-label="5 stars" class="rating__label" for="rating2-50">
+                                                                <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                                            </label>
+                                                            <input class="rating__input" name="rating2" id="rating2-50" value="5" type="radio" checked="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="js-form-message form-group mb-3 row">
+                                                <div class="col-md-4 col-lg-3">
+                                                    <label for="descriptionTextarea" class="form-label">Bình luận</label>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <textarea class="form-control" rows="3" id="comment" ></textarea>
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="offset-md-4 offset-lg-3 col-auto">
+                                                    <button type="button" class="btn btn-primary-dark btn-wide transition-3d-hover comment-submit" atr="Comment Submit">Bình luận</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="js-form-message form-group mb-3 row">
-                                        <div class="col-md-4 col-lg-3">
-                                            <label for="descriptionTextarea" class="form-label">Bình luận</label>
-                                        </div>
-                                        <div class="col-md-8 col-lg-9">
-                                            <textarea class="form-control" rows="3" id="comment" ></textarea>
-                                        </div>
-                                    </div> 
-                                    <div class="row">
-                                        <div class="offset-md-4 offset-lg-3 col-auto">
-                                            <button type="button" class="btn btn-primary-dark btn-wide transition-3d-hover comment-submit" atr="Comment Submit">Bình luận</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <?php endif ?> 
+                                <?php else: ?>
+                                <h3 class="font-size-18 mb-5">Bạn cần đăng nhập để thực hiện tính năng này</h3>
+                                <?php endif ?> 
+                                
                             </div>
-                        </div> 
-                        <div class="commentlist">
-                            
                         </div> 
                     </div>
                 </div>

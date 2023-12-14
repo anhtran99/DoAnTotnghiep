@@ -18,7 +18,10 @@ class CommentRepository extends BaseRepository implements RepositoryInterface
     }
 
     public function get_all($id){ 
-        return DB::table('comment')->where("id", "=", $id)->get(); 
+        return DB::table('comment')
+            ->leftjoin("customer_detail", "customer_detail.customer_auth_id", "comment.customer_id")
+            ->where("comment.product_id", "=", $id)
+            ->get(); 
     } 
     public function get_one($id){
         $sql = "SELECT * FROM category WHERE id = ".$id;

@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\Manager\ProductRepository; 
+use App\Models\Product\Product; 
 use Session;
 use Hash;
-use DB;
+use DB;   
 
 class DisplayController extends Controller
 {
+    protected $product;  
+
+    public function __construct(Product $product ){
+        $this->product    = new ProductRepository($product);  
+    }
     public function login(Request $request){
         $customer_data = static::generate_logined($request); 
         $navigationStatus       = "show";
@@ -23,7 +30,9 @@ class DisplayController extends Controller
     public function product(Request $request, $slug){
         $customer_data = static::generate_logined($request); 
         $navigationStatus       = " ";
-        return view("customer.product", compact("navigationStatus", "customer_data"));
+        $comment = $this->product->can_comment($customer_data, $request->id);
+
+        return view("customer.product", compact("navigationStatus", "customer_data", "comment"));
     }
     public function category(Request $request){ 
         $customer_data = static::generate_logined($request); 

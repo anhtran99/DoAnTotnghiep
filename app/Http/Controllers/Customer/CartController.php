@@ -57,7 +57,6 @@ class CartController extends Controller
         $token = $request->cookie('_token_');
         list($user_id, $token) = explode('$', $token, 2); 
         $user = $this->customer_detail->get_secret($user_id);
-        if ($user) { 
             return Hash::check($user_id . '$' . $user->secret_key, $token);
         }else{
             return false;
