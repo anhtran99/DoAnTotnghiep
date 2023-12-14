@@ -76,7 +76,15 @@ class WarehouseController extends Controller
         $warehouse_data = json_decode($request->data_metadata);
         $token = $request->cookie('_token__');
         list($user_id, $token) = explode('$', $token, 2); 
-        $history_id   = $this->warehouse_history->create(["admin_id" => $user_id, "history_status" => 1])->id;
+
+        $data = [  
+            "admin_id"          => $user_id,  
+            "history_status"   => 1,  
+        ];
+        if ($request->data_image != "null") {
+            $data["image"] = $this->warehouse_history->imageInventor('image-data', $request->data_image, 1200);
+        }
+        $history_id   = $this->warehouse_history->create($data)->id;
 
         foreach ($warehouse_data as $key => $data_item) {
             $input_detail = [

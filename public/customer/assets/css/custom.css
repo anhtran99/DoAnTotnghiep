@@ -77,8 +77,8 @@ ul .data-scroll::-webkit-scrollbar-thumb {
 #category-search{
   background-color: transparent;
   border: none;
-  border-top: 2px solid #ed7d1b91;
-  border-bottom: 2px solid #ed7d1b91;
+  border-top: 2px solid #3758bb9c;
+  border-bottom: 2px solid #3758bb9c;
   outline: none;
 }
 

@@ -29,6 +29,7 @@ class WarehouseRepository extends BaseRepository implements RepositoryInterface
     public function get_history_all(){
         $sql_getall =   "SELECT warehouse_history.id, 
                                 warehouse_history.history_status, 
+                                warehouse_history.image, 
                                 admin_auth.email, 
                                 sum(quantity) as quantities, 
                                 sum(prices) as prices, 
@@ -41,6 +42,7 @@ class WarehouseRepository extends BaseRepository implements RepositoryInterface
                             GROUP BY warehouse_history_detail.warehouse_history_id, 
                                     warehouse_history.id, 
                                     warehouse_history.history_status, 
+                                    warehouse_history.image, 
                                     admin_auth.email, 
                                     warehouse_history.created_at
                             ORDER BY warehouse_history.created_at DESC";

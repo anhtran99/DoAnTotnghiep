@@ -60,6 +60,7 @@ const View = {
                 data.history.email,
                 IndexView.table.formatNumber(total_price) + ` đ`,
                 data.history.created_at,
+                `<a href="/${data.history.image}" target="_blank"><img src="/${data.history.image}" style="width: 50px" alt="Không có hóa đơn"></a>`,
                 `<span class="badge badge-pill badge-${data.history.history_status == 1 ? "green" : "red"} m-r-5 m-b-5">${data.history.history_status == 1 ? "Nhập kho" : "Xuất kho"}</span>`,
                 `<div class="view-data modal-fs-control" style="cursor: pointer" atr="View" data-id="${data.history.id}"><i class="anticon anticon-eye"></i></div>`
             ]
@@ -84,6 +85,11 @@ const View = {
                     },
                     {
                         title: 'Thời gian',
+                        name: 'icon',
+                        orderable: true,
+                    },
+                    {
+                        title: 'Hóa đơn',
                         name: 'icon',
                         orderable: true,
                     },
@@ -220,8 +226,10 @@ const View = {
 
                 // --get Value
                 var data_metadata       = View.Item.getVal(resource);
+                var data_image          = $(`${resource}`).find('.data-image')[0].files;
 
                 if (onPushData) { 
+                    fd.append('data_image', data_image[0] ?? "null");
                     fd.append('data_metadata', data_metadata);
                     return fd;
                 }else{

@@ -10,7 +10,7 @@ use Mail;
 use App\Mail\MailNotify;
 
 use App\Repositories\CustomerRepository;
-use App\Models\CustomerDetail;
+use App\Models\Customer\CustomerDetail;
 use Carbon\Carbon;
 use Session;
 use Hash;
@@ -57,8 +57,8 @@ class CartController extends Controller
         $token = $request->cookie('_token_');
         list($user_id, $token) = explode('$', $token, 2); 
         $user = $this->customer_detail->get_secret($user_id);
-        if ($user) {
-            return Hash::check($user_id . '$' . $user[0]->secret_key, $token);
+        if ($user) { 
+            return Hash::check($user_id . '$' . $user->secret_key, $token);
         }else{
             return false;
         }

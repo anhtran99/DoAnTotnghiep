@@ -177,6 +177,16 @@ const Template = {
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 offset-3">
 							<div class="card">
 								<div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label control-label">Hóa đơn</label> 
+                                        <div class="col-md-8">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input image-input data-image" id="customFile" accept="image/*">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div> 
+                                            <div class="image-preview form-preview"> </div>
+                                        </div>
+                                    </div> 
 									<div class="item-list">
 
 									</div>

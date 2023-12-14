@@ -25,6 +25,7 @@ class PaymentController extends Controller
         $item_id = $request->data_id;
 
         session(['url_prev' => '/profile', 'item_id' => $item_id]);
+        
         $vnp_TmnCode = "6NE7KUNZ"; //Mã website tại VNPAY 
         $vnp_HashSecret = "USUYDLXTCYCNCTNTVRUCQCJBUIELNVGF"; //Chuỗi bí mật
         $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";

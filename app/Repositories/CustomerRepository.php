@@ -42,7 +42,7 @@ class CustomerRepository extends BaseRepository implements RepositoryInterface
 
     // Tìm customer với Id
     public function find_with_id($id){
-        return $this->model->where('customer.id', '=', $id)->leftjoin("customer_detail", "customer.id", "=", "customer_detail.customer_id")->first();
+        return $this->model->where('customer.id', '=', $id)->leftjoin("customer_detail", "customer.id", "=", "customer_detail.customer_auth_id")->first();
     }
     
     // Kiểm tra Email / Mật khẩu
@@ -80,7 +80,7 @@ class CustomerRepository extends BaseRepository implements RepositoryInterface
     public function get_cart($id){
          $sql = "SELECT id, cart
                     FROM customer_detail 
-                    WHERE customer_id = ".$id;
+                    WHERE customer_auth_id = ".$id;
         return DB::select($sql);
     }
  
