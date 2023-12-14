@@ -138,6 +138,11 @@ class OrderController extends Controller
             return $this->order->send_response("Đặt hàng thành công, chuyển hướng đến VNPay", $route_redirect, 200); 
         }
     }
+    public function remove(Request $request, $id){
+        $this->order->update(["order_status" => 6], $id); 
+        return $this->order->send_response("Done", "", 200); 
+    }
+
 
     public function create_pay($request, $prices, $order_id){  
 

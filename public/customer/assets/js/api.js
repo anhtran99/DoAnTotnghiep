@@ -204,6 +204,10 @@ const Api = {
             tab: tab ?? null,
         }
     });
+    Api.Order.Remove = (id) => $.ajax({
+        url: `/customer/apip/order/remove/${id}`,
+        method: 'GET',
+    });
 })();
 
 

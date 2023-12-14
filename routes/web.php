@@ -73,6 +73,7 @@ Route::prefix('customer')->group(function () {
         }); 
         Route::prefix('order')->group(function () {
             Route::post('checkout', 'Customer\OrderController@checkout')->name('customer.order.checkout');
+            Route::get('remove/{id}', 'Customer\OrderController@remove')->name('customer.order.remove');
             Route::get('get', 'Customer\OrderController@get')->name('customer.order.get');
         }); 
         Route::prefix('comment')->group(function () {

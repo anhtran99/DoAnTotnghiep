@@ -186,6 +186,7 @@ const View = {
 							</div>
 							<div class="order-footer">
 								Tổng số tiền: <span>${ViewIndex.Config.formatPrices(data.order.total)} đ</span>
+								${data.order.order_status == 0 ? `<a href="#" class="remove-order" atr="${data.order.id}">Hủy đơn</a>` : ''}
 							</div>`);
 			
 
@@ -453,6 +454,17 @@ const View = {
             .always(() => { }); 
     })
     
+    $(document).on('click', `.remove-order`, function() {
+    	let id = $(this).attr("atr")
+    	Api.Order.Remove(id)
+            .done(res => { 
+            	getOrder()
+            })
+            .fail(err => {   })
+            .always(() => { }); 
+    });
+
+
     function getOrder(tab){
     	Api.Order.GetOrder(tab)
             .done(res => { 
