@@ -39,7 +39,7 @@ const View = {
                 `<p><i class="far fa-user m-r-10"></i>${data.username}</p>
                 <p><i class="far fa-envelope m-r-10"></i>${data.email}</p>
                 <p><i class="fas fa-phone-alt m-r-10"></i>${data.telephone}</p>
-                <a href="zalo:${data.telephone}">Zalo: <i class="fas fa-phone-alt m-r-10"></i>${data.telephone}</a>`,
+                <a href="tel:${data.telephone}">Call: <i class="fas fa-phone-alt m-r-10"></i>${data.telephone}</a>`,
                 `<div class="d-flex align-items-center">
                     <div class="badge badge-primary badge-dot m-r-10"></div>
                     <div>Đơn giá: ${IndexView.table.formatNumber(data.sub_total)} đ</div>
